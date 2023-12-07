@@ -25,6 +25,18 @@ int VTKgrafico(){
     return opt;
 }
 
+int funcOctree(){
+    int opt;
+    cout<<" ***Funciones del Octree**"<<endl;
+    cout<<" 1.- Insertar nodo"<<endl;
+    cout<<" 2.- Buscar nodo"<<endl;
+    cout<<" 3.- Mostrar nodos hoja y nivel"<<endl;
+    cout<<" 4.- Salir"<<endl;
+    cout<<" -> Ingrese una opcion: ";
+    cin>>opt;
+    return opt;
+}
+
 int main(){
     Octree* root = nullptr;
     int opt, option;
@@ -48,6 +60,42 @@ int main(){
                 delete root;
                 root = nullptr;
                 break;
+            case 3:{
+                double punto;
+                bool sal = false;
+                int opti;
+                while (!sal) {
+                    opti = funcOctree();
+                    switch(opti){
+                        case 1:{
+                            cout<<"Ingresar puntos entre -100 y 100 se puede ser decimal(usar punto: ej. 2.34): ";
+                            Point p;
+                            cin>>p.x;
+                            cin>>p.y;
+                            cin>>p.z;
+                            root->insert(p);
+                            break;
+                            }
+                        case 2:{
+                            cout<<"Ingresar puntos entre -100 y 100 se puede ser decimal(usar punto: ej. 2.34): ";
+                            bool res;
+                            Point p;
+                            cin>>p.x;
+                            cin>>p.y;
+                            cin>>p.z;
+                            res = root->search(p);
+                            cout<<(res?"El nodo SI se encuentra en el arbol":"El nodo NO se encunetra en el arbol")<<endl;
+                            break;
+                            }
+                        case 3:
+                            root->printNodes();
+                            break;
+                        case 4:
+                            sal = true;
+                            break;
+                        }
+                    }
+                }
             case 0:
                 exit = true;
                 break;
@@ -55,8 +103,6 @@ int main(){
     }
     //Octree* root = new Octree({0, 0,0}, {100, 100, 100});
 
-    // Llama a la función para insertar puntos desde el archivo CSV
-    //insertPointsFromFile(argv[1], root);
     //root->insert({30,30,30}); // llf
     //root->insert({60,30,30}); // lrf
     //root->insert({30,60,30}); // ulf
