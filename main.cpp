@@ -61,6 +61,7 @@ int main(){
                 root = nullptr;
                 break;
             case 3:{
+                root = new Octree({0, 0, 0}, {100, 100, 100});
                 double punto;
                 bool sal = false;
                 int opti;
@@ -96,13 +97,16 @@ int main(){
                         }
                     }
                 }
+                delete root;
+                root = nullptr;
+                break;
             case 0:
                 exit = true;
                 break;
         }
     }
-    //Octree* root = new Octree({0, 0,0}, {100, 100, 100});
 
+    //Octree* root = new Octree({0, 0,0}, {100, 100, 100});
     //root->insert({30,30,30}); // llf
     //root->insert({60,30,30}); // lrf
     //root->insert({30,60,30}); // ulf
@@ -113,11 +117,7 @@ int main(){
     //root->insert({60,30,60}); // lrb
 
     //root->insert({10,10,10}); // level2
-    //root->insert({300,300,300});
-    //root->insert({301,301,301});
     //root->printNodes();
-    //printNodes(root);
-
 
     return 0;
 }
