@@ -75,3 +75,9 @@ La opcion de buscar nos pide las coordenadas de un punto y nos indica si
 se encuentra en el arbol.
 
 ![Ejemplo d  local](Imagenes/ejec7.png)
+
+## Paper
+
+Puede ver mas a detalle como se llevo a cabo la IMPLEMENTACIÓN
+
+[paper](Octree-Paper_Paul%20Parizaca%20Mozo.pdf)
