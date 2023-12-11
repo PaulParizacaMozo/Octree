@@ -45,7 +45,7 @@ int main(){
         opt = menu();
         switch (opt) {
             case 1:
-                root = new Octree({-490, 0, -80}, {300, 400, 80});
+                root = new Octree({-500, -500, -500}, {500, 500, 500});
                 //root = new Octree({-490, 0, -80}, {300, 400, 80});
                 option = VTKgrafico();
                 printVTK(root,"points1.csv",option);
@@ -53,15 +53,15 @@ int main(){
                 root = nullptr;
                 break;
             case 2:
-                root = new Octree({-35, -65, 0}, {50, 70, 200});
-                //root = new Octree({-200, -200, -200}, {200, 200, 200});
+                //root = new Octree({-35, -65, 0}, {50, 70, 200});
+                root = new Octree({-20000, -20000, -20000}, {20000, 20000, 20000});
                 option = VTKgrafico();
                 printVTK(root,"points2.csv", option);
                 delete root;
                 root = nullptr;
                 break;
             case 3:{
-                root = new Octree({0, 0, 0}, {100, 100, 100});
+                root = new Octree({-100, -100, -100}, {100, 100, 100});
                 double punto;
                 bool sal = false;
                 int opti;
@@ -75,6 +75,7 @@ int main(){
                             cin>>p.y;
                             cin>>p.z;
                             root->insert(p);
+                            cout<<"Se inserto punto con exito.\n"<<endl;
                             break;
                             }
                         case 2:{
@@ -85,11 +86,12 @@ int main(){
                             cin>>p.y;
                             cin>>p.z;
                             res = root->search(p);
-                            cout<<(res?"El nodo SI se encuentra en el arbol":"El nodo NO se encunetra en el arbol")<<endl;
+                            cout<<(res?"El nodo SI se encuentra en el arbol.\n":"El nodo NO se encunetra en el arbol.\n")<<endl;
                             break;
                             }
                         case 3:
                             root->printNodes();
+                            cout<<endl;
                             break;
                         case 4:
                             sal = true;
