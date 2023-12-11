@@ -45,13 +45,6 @@ void Octree::insert(const Point &newP){
     //Third case - split current node into 4 nodes
     leaf = false;
     if(ulf == nullptr){
-        /*
-           Example quadtree
-           ulf = new Octree({pMin.x,pMid.y},{pMid.x, pMax.y});
-           urf = new Octree(pMid,pMax);
-           llf = new Octree(pMin,pMid);
-           lrf = new Octree({pMid.x, pMin.y}, {pMax.x, pMid.y});
-           */
         ulf = new Octree({pMin.x,pMid.y,pMin.z},{pMid.x, pMax.y, pMid.z}); //ok
         urf = new Octree({pMid.x,pMid.y,pMin.z},{pMax.x, pMax.y, pMid.z}); //ok
         llf = new Octree(pMin,pMid); //ok
@@ -77,7 +70,6 @@ void Octree::insert(const Point &newP){
     if (urb->inside(newP)) { urb->insert(newP);}
     if (llb->inside(newP)) { llb->insert(newP);}
     if (lrb->inside(newP)) { lrb->insert(newP);}
-
 }
 
 bool Octree::search(const Point &auxP){
@@ -120,23 +112,6 @@ void Octree::printNodes(){
     return printNodes(0);
 }
 
-void printNodes(const Octree *q){
-    if (q->leaf) {
-        cout<<q->p<<endl;
-        return;
-    }
-    if(q->ulf){
-        printNodes(q->ulf);
-        printNodes(q->urf);
-        printNodes(q->llf);
-        printNodes(q->lrf);
-        printNodes(q->ulb);
-        printNodes(q->urb);
-        printNodes(q->llb);
-        printNodes(q->lrb);
-    }
-}
-
 void insertPointsFromFile(const string& filename, Octree* root) {
     ifstream file(filename);
     if (!file.is_open()) {
@@ -157,6 +132,5 @@ void insertPointsFromFile(const string& filename, Octree* root) {
             cerr << "Error al leer la línea: " << line << endl;
         }
     }
-
     file.close();
 }

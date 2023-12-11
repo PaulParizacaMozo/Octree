@@ -20,7 +20,7 @@ class Octree{
         Octree *lrb = nullptr;
         //Constructor,Destructor
         Octree(const Point &min, const Point &max);
-        Octree(const Octree &q) = delete; // No esta permitido la creacion de objetos mediante copia.
+        Octree(const Octree &q) = delete; // No permite la creacion de objetos mediante copia.
         ~Octree();
         //Functions
         bool inside(const Point & p);
