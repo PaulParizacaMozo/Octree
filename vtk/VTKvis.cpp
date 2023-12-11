@@ -139,7 +139,8 @@ void printVTK(Octree * root,string nameFile,const int tipo) {
 
     printNodesVtk(root, renderer, tipo);
 
-    cout<<nPuntos<<endl;
+    cout<<"Se insertaron "<<nPuntos<<" en el Octree."<<endl;
+    nPuntos=0;
     // Crear una ventana de renderizado y añadir el renderizador
     vtkSmartPointer<vtkRenderWindow> renderWindow = vtkSmartPointer<vtkRenderWindow>::New();
     renderWindow->AddRenderer(renderer);
